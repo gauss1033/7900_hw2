@@ -9,15 +9,12 @@ def polynomial_features(X, degree):
 
     Parameters
     ----------
-    X : array-like of shape (n_samples, 1)
-        Input feature values.
-    degree : int
-        Maximum power to include (D in the homework).
+    X : array-like of shape (n_samples, 1); Input feature values.
+    degree : int; Maximum power to include (D in the homework).
 
     Returns
     -------
-    ndarray with shape (n_samples, degree) 
-        Design matrix.
+    ndarray with shape (n_samples, degree); Design matrix.
     """
     fmatrix = []
     for point in X:
@@ -36,22 +33,17 @@ def fourier_features(X, J, T):
         [cos(2π x / T), sin(2π x / T),
          cos(2π*2 x / T), sin(2π*2 x / T), ...,
          cos(2π*J x / T), sin(2π*J x / T)]
-    No constant feature is included; the intercept is fit separately (and not
-    penalized) in the notebook.
+    No constant feature is included; the intercept is fit separately (and not penalized) in the notebook.
 
     Parameters
     ----------
-    X : array-like of shape (n_samples, 1)
-        Input feature values.
-    J : int
-        Number of harmonics.
-    T : float
-        Period; 1/T is the fundamental frequency.
+    X : array-like of shape (n_samples, 1); Input feature values.
+    J : int; Number of harmonics.
+    T : float; Period; 1/T is the fundamental frequency.
 
     Returns
     -------
-    ndarray with shape (n_samples, 2*J)
-        Fourier design matrix (feature dimension D = 2J).
+    ndarray with shape (n_samples, 2*J); Fourier design matrix (feature dimension D = 2J).
     """
     fmatrix = []
     for point in X:
