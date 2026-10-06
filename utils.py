@@ -19,16 +19,14 @@ def polynomial_features(X, degree):
     ndarray with shape (n_samples, degree) 
         Design matrix.
     """
-    features = []
+    fmatrix = []
     for point in X:
-        for j in point:
-            nb = j
-            break
-        temp = []
+        x = point[0]
+        features = []
         for i in range(degree):
-            temp.append(nb**(i+1))
-        features.append(temp)
-    return features
+            features.append(x**(i+1))
+        fmatrix.append(features)
+    return fmatrix
 
 def fourier_features(X, J, T):
     """
@@ -55,8 +53,15 @@ def fourier_features(X, J, T):
     ndarray with shape (n_samples, 2*J)
         Fourier design matrix (feature dimension D = 2J).
     """
-    # TODO: implement
-    raise NotImplementedError
+    fmatrix = []
+    for point in X:
+        x = point[0]
+        features = []
+        for i in range(J):
+            features.append(np.cos(2*np.pi*(i+1)*x/T))
+            features.append(np.sin(2*np.pi*(i+1)*x/T))
+        fmatrix.append(features)
+    return fmatrix
 
 
 def mse(y_true, y_pred):
