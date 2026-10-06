@@ -19,8 +19,16 @@ def polynomial_features(X, degree):
     ndarray with shape (n_samples, degree) 
         Design matrix.
     """
-    # TODO: implement
-    raise NotImplementedError
+    features = []
+    for point in X:
+        for j in point:
+            nb = j
+            break
+        temp = []
+        for i in range(degree):
+            temp.append(nb**(i+1))
+        features.append(temp)
+    return features
 
 def fourier_features(X, J, T):
     """
